@@ -15,5 +15,8 @@ public class MailContentBuilder {
         Context context = new Context();
         context.setVariable("message", message);
         return templateEngine.process("mailTemplate", context);
+        // thymeleaf will automatically add message to our html template and will be sent in the form of text
+        // when user will opt for authentication. User will get an email for verification and in that verification
+        // he will get the message.
     }
 }

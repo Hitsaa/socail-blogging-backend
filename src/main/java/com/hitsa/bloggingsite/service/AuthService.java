@@ -4,7 +4,7 @@ import com.hitsa.bloggingsite.dto.AuthenticationResponse;
 import com.hitsa.bloggingsite.dto.LoginRequest;
 import com.hitsa.bloggingsite.dto.RefreshTokenRequest;
 import com.hitsa.bloggingsite.dto.RegisterRequest;
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 import com.hitsa.bloggingsite.model.NotificationEmail;
 import com.hitsa.bloggingsite.model.User;
 import com.hitsa.bloggingsite.model.VerificationToken;
@@ -66,7 +66,7 @@ public class AuthService {
 
     private void fetchUserAndEnable(VerificationToken verificationToken) {
         String username = verificationToken.getUser().getUsername();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringRedditException("User not found with name - " + username));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringBloggingException("User not found with name - " + username));
         user.setEnabled(true);
         userRepository.save(user);
     }
@@ -83,7 +83,7 @@ public class AuthService {
 
     public void verifyAccount(String token) {
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
-        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringRedditException("Invalid Token")));
+        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringBloggingException("Invalid Token")));
     }
 
     public AuthenticationResponse login(LoginRequest loginRequest) {

@@ -1,7 +1,7 @@
 package com.hitsa.bloggingsite.service;
 
 import com.hitsa.bloggingsite.dto.SubredditDto;
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 import com.hitsa.bloggingsite.mapper.SubredditMapper;
 import com.hitsa.bloggingsite.model.Subreddit;
 import com.hitsa.bloggingsite.repository.SubredditRepository;
@@ -39,7 +39,7 @@ public class SubredditService {
 
     public SubredditDto getSubreddit(Long id) {
         Subreddit subreddit = subredditRepository.findById(id)
-                .orElseThrow(() -> new SpringRedditException("No subreddit found with ID - " + id));
+                .orElseThrow(() -> new SpringBloggingException("No subreddit found with ID - " + id));
         return subredditMapper.mapSubredditToDto(subreddit);
     }
 }

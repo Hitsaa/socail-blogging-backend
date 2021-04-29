@@ -1,6 +1,6 @@
 package com.hitsa.bloggingsite.service;
 
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 import com.hitsa.bloggingsite.model.RefreshToken;
 import com.hitsa.bloggingsite.repository.RefreshTokenRepository;
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class RefreshTokenService {
 
     void validateRefreshToken(String token) {
         refreshTokenRepository.findByToken(token)
-                .orElseThrow(() -> new SpringRedditException("Invalid refresh Token"));
+                .orElseThrow(() -> new SpringBloggingException("Invalid refresh Token"));
     }
 
     public void deleteRefreshToken(String token) {

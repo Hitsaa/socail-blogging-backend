@@ -1,6 +1,6 @@
 package com.hitsa.bloggingsite.security;
 
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -35,7 +35,7 @@ public class JwtProvider {
             InputStream resourceAsStream = getClass().getResourceAsStream("/springblog.jks");
             keyStore.load(resourceAsStream, "secret".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
-            throw new SpringRedditException("Exception occurred while loading keystore", e);
+            throw new SpringBloggingException("Exception occurred while loading keystore", e);
         }
 
     }
@@ -63,7 +63,7 @@ public class JwtProvider {
         try {
             return (PrivateKey) keyStore.getKey("springblog", "secret".toCharArray());
         } catch (KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException e) {
-            throw new SpringRedditException("Exception occured while retrieving public key from keystore", e);
+            throw new SpringBloggingException("Exception occured while retrieving public key from keystore", e);
         }
     }
 
@@ -76,7 +76,7 @@ public class JwtProvider {
         try {
             return keyStore.getCertificate("springblog").getPublicKey();
         } catch (KeyStoreException e) {
-            throw new SpringRedditException("Exception occured while " +
+            throw new SpringBloggingException("Exception occured while " +
                     "retrieving public key from keystore", e);
         }
     }

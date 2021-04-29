@@ -1,6 +1,6 @@
 package com.hitsa.bloggingsite.model;
 
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 
 import java.util.Arrays;
 
@@ -16,7 +16,7 @@ public enum VoteType {
         return Arrays.stream(VoteType.values())
                 .filter(value -> value.getDirection().equals(direction))
                 .findAny()
-                .orElseThrow(() -> new SpringRedditException("Vote not found"));
+                .orElseThrow(() -> new SpringBloggingException("Vote not found"));
     }
 
     public Integer getDirection() {

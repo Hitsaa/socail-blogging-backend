@@ -2,7 +2,7 @@ package com.hitsa.bloggingsite.service;
 
 import com.hitsa.bloggingsite.dto.VoteDto;
 import com.hitsa.bloggingsite.exceptions.PostNotFoundException;
-import com.hitsa.bloggingsite.exceptions.SpringRedditException;
+import com.hitsa.bloggingsite.exceptions.SpringBloggingException;
 import com.hitsa.bloggingsite.model.Post;
 import com.hitsa.bloggingsite.model.Vote;
 import com.hitsa.bloggingsite.repository.PostRepository;
@@ -31,7 +31,7 @@ public class VoteService {
         if (voteByPostAndUser.isPresent() &&
                 voteByPostAndUser.get().getVoteType()
                         .equals(voteDto.getVoteType())) {
-            throw new SpringRedditException("You have already "
+            throw new SpringBloggingException("You have already "
                     + voteDto.getVoteType() + "'d for this post");
         }
         if (UPVOTE.equals(voteDto.getVoteType())) {
