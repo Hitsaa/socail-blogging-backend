@@ -66,3 +66,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+
+/**
+ * WebSecurityConfigurerAdapter is our base class for all the security configurations. It provide all the default
+ * security configurations for our application. It also provides methods which we can easily override and
+ * customize our application.
+ * first we are overriding cofigure method which takes HttpSecurity as input and inside this method we will
+ * disable csrf protection for our backend.
+ * we disable csrf because csrf attacks happen when there are sessions and we are using cookies to authenticate
+ * the session information. As Rest Apis are stateless by definitions and as we are using jsonwebtokens for authorization
+ * we can safely disable this feature.
+ * Next we will authorize all the incoming request to our backend coming through "/api/auth". and we make sure that
+ * all the requests which are not following this pattern should be authenticated.
+ * BCryptPasswordEncoder is an class which is used to encrypt the password. we are annotating the interface
+ * PasswordEncoder with @Bean so that once it is annotated, it will be injected as Bean in the spring context container.
+ * 
+ * 
+ */

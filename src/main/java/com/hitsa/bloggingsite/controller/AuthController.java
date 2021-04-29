@@ -23,7 +23,7 @@ public class AuthController {
     private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) { // RegisterRequest is Data Transfer Object placed in dto package
         authService.signup(registerRequest);
         return new ResponseEntity<>("User Registration Successful",
                 OK);

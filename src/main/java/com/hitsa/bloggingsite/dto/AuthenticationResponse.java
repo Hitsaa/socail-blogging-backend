@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-
+// DTO stands for data transfer object
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

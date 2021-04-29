@@ -115,3 +115,45 @@ public class AuthService {
         return !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
     }
 }
+
+/**
+ * we have declared final fields to following. We could have annotated them with @Autowired annotation but we didn't.
+ * private final PasswordEncoder passwordEncoder;
+ * private final UserRepository userRepository;
+ * 
+ * it is because spring boot suggests that autowired annotation should be injected mostly in constructors rather
+ * than fields.
+ * Although current documentation for spring framework (5.0.3) only defines two major types of injection, in reality there are three;
+
+Constructor-based dependency injection
+Setter-based dependency injection
+Field-based dependency injection
+
+Constructor-based dependency injection
+In constructor-based dependency injection, the class constructor is annotated with @Autowired and includes a 
+variable number of arguments with the objects to be injected.
+
+The main advantage of constructor-based injection is that you can declare your injected fields final, as they 
+will be initiated during class instantiation. This is convenient for required dependencies.
+
+Setter-based dependency injection
+In setter-based dependency injection, setter methods are annotated with @Autowired. Spring container will call 
+these setter methods once the Bean is instantiated using a no-argument constructor or a no-argument static factory 
+method in order to inject the Bean’s dependencies.
+
+Field-based dependency injection
+In field-based dependency injection, fields/properties are annotated with @Autowired. Spring container will 
+set these fields once the class is instantiated.
+
+Field-based dependency injection drawbacks
+Disallows immutable field declaration
+Field-based dependency injection won’t work on fields that are declared final/immutable as this fields must be 
+instantiated at class instantiation. The only way to declare immutable dependencies is by using constructor-based 
+dependency injection.
+
+Hidden dependencies
+When using a dependency injection pattern, affected classes should clearly expose these dependencies using a public 
+interface either by exposing the the required dependencies in the constructor or the optional ones using methods 
+(setters). When using field-based dependency injection, the class is inherently hiding these dependencies to the 
+outside world.
+ */
