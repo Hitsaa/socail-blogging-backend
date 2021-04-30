@@ -12,7 +12,7 @@ import com.hitsa.bloggingsite.repository.PostRepository;
 import com.hitsa.bloggingsite.repository.SubredditRepository;
 import com.hitsa.bloggingsite.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
-@Slf4j
+// @Slf4j
 @Transactional
 public class PostService {
 
