@@ -28,7 +28,7 @@ class MailService {
             messageHelper.setTo(notificationEmail.getRecipient());
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(mailContentBuilder.build(notificationEmail.getBody()));
-            // this method will return the message in html format.
+            // the above and below method will return the message in html format.
             // messageHelper.setText(notificationEmail.getBody());
         };
         try {
